@@ -3,6 +3,7 @@ function Particle(){
 	this.rotation = [0,0,0];
 	this.spherical_position = [0,0,0];
 	this.model = "";
+	this.type = "";
 };
 
 Particle.prototype.draw = function(){

@@ -5,40 +5,83 @@
     <link rel="stylesheet" href="webgl.css" type="text/css">
     <script src="./assets/webgl/sylvester.js" type="text/javascript"></script>
     <script src="./assets/webgl/glUtils.js" type="text/javascript"></script>
-	<script src="./assets/js/variables.js" type="text/javascript"></script>
 	<script src="./assets/js/Shader.js" type="text/javascript"></script>
+	<script src="./assets/js/Atom.js" type="text/javascript"></script>
 	<script src="./assets/js/GraphicsObject.js" type="text/javascript"></script>
 	<script src="./assets/js/Sphere.js" type="text/javascript"></script>
 	<script src="./assets/js/Particle.js" type="text/javascript"></script>
+	<script src="./assets/js/config.js" type="text/javascript"></script>
+	<script src="./assets/js/KeyPressManager.js" type="text/javascript"></script>
     <script src="webgl-demo.js" type="text/javascript"></script>
 
     <!-- Fragment shader program -->
 
     <script id="shader-fs" type="x-shader/x-fragment">
+		precision mediump float; 
+		varying vec4 forFragColor;
+		
 		varying highp vec2 vTextureCoord;
-
 		uniform sampler2D uSampler;
 
-		void main(void) {
-		gl_FragColor = texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
+		void main() {
+		  vec4 tex_sample = texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
+		  gl_FragColor = tex_sample;// * forFragColor;
 		}
     </script>
     
     <!-- Vertex shader program -->
     
     <script id="shader-vs" type="x-shader/x-vertex">
-		attribute vec3 aVertexPosition;
-		attribute vec2 aTextureCoord;
 
-		uniform mat4 uMVMatrix;
-		uniform mat4 uPMatrix;
+	attribute vec3 aVertexPosition;
+	attribute vec2 aTextureCoord;
+//	attribute vec3 inputNormal;
 
-		varying highp vec2 vTextureCoord;
+	uniform mat4 uPMatrix, uMVMatrix;//, normalMat;
+	
+	varying highp vec2 vTextureCoord;
 
-		void main(void) {
-		gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
-		vTextureCoord = aTextureCoord;
-		}
+	varying vec4 forFragColor;
+
+	const vec3 lightPos = vec3(1, 1, -1);
+	const vec3 diffuseColor = vec3(0.5, 0.0, 0.0);
+	const vec3 specColor = vec3(1.0, 1.0, 1.0);
+
+	void main(){
+	  vec4 pos = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+	  gl_Position = pos;
+
+	  // all following gemetric computations are performed in the
+	  // camera coordinate system (aka eye coordinates)
+	  //vec3 normal = vec3(normalMat * vec4(1, 1, 1, 0.0)); // vec4(inputNormal, 0.0));
+	  vec3 normal = vec3(1, 1, 1);
+	  vec4 vertPos4 = uMVMatrix * vec4(aVertexPosition, 1.0);
+	  vec3 vertPos = vec3(vertPos4) / vertPos4.w;
+	  vec3 lightDir = normalize(lightPos - vertPos);
+	  vec3 reflectDir = reflect(-lightDir, normal);
+	  vec3 viewDir = normalize(-vertPos);
+
+	  float lambertian = max(dot(lightDir,normal), 0.0);
+	  float specular = 0.0;
+	  
+	  if(lambertian > 0.0) {
+		float specAngle = max(dot(reflectDir, viewDir), 0.0);
+		specular = pow(specAngle, 4.0);
+
+		// the exponent controls the shininess (try mode 2)
+/*		if(mode == 2)  specular = pow(specAngle, 16.0);
+		   
+		// according to the rendering equation we would need to multiply
+		// with the the "lambertian", but this has little visual effect
+		if(mode == 3) specular *= lambertian;
+		// switch to mode 4 to turn off the specular component
+		if(mode == 4) specular *= 0.0;*/
+	  }
+	  
+	  forFragColor = vec4(lambertian*diffuseColor + specular*specColor, 1.0);
+	  vTextureCoord = aTextureCoord;
+	}
+
     </script>
   </head>
   
