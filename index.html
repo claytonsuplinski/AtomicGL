@@ -45,12 +45,12 @@
 		opacity:1;
 	}
 	
-	#top-panel{
+	#bottom-panel{
 		background:rgba(102, 71, 138, 0.06);
 		border-width:0px;
 	}
 	
-	#top-panel input{
+	#bottom-panel input{
 		background:rgba(255,255,255,0.1);
 		border-width:0px;
 		text-align:center;
@@ -58,47 +58,47 @@
 		width:80px;
 	}
 	
-	#top-panel .navbar-brand{
+	#bottom-panel .navbar-brand{
 		color:#A38BF2;
 	}
 	
-	#top-panel input, #top-panel ul li a{
+	#bottom-panel input, #bottom-panel ul li a{
 		font-family:'Dosis', Helvetica;
 	}
 	
-	#top-panel ul li a, #bottom-panel ul li a{
+	#bottom-panel ul li a, #top-panel ul li a{
 		color: #9D9D9D !important;
 	}
 	
-	#top-panel .btn-purple{
+	#bottom-panel .btn-purple{
 		border-radius:0px;
 		min-width:80px;
 		border-width:0px;
 	}
 	
-	#bottom-panel{
+	#top-panel{
 		background:rgba(102, 71, 138, 0.06);
 		border-width:0px;
 		color:white;
 	}
 	
-	#bottom-panel ul{
+	#top-panel ul{
 		width:100%;
 		text-align:center;
 	}
 	
-	#bottom-panel a, #bottom-panel a *{
+	#top-panel a, #top-panel a *{
 		font-family:'Dosis', Helvetica;
 	}
 	
-	#bottom-panel table{
+	#top-panel table{
 		display:inline;
 		width:5%;
 		font-size:10px;
 		vertical-align:top;
 	}
 	
-	#bottom-panel table td{
+	#top-panel table td{
 		text-align:right;
 		color: #9D9D9D;
 	}
@@ -111,25 +111,25 @@
 			margin:0px;
 		}
 		
-		#top-panel .navbar-header{
+		#bottom-panel .navbar-header{
 			margin-left:auto;
 			margin-right:auto;
 		}
 		
-		#top-panel input{
+		#bottom-panel input{
 			width:100%;
 		}
 		
-		#top-panel .btn-purple{
+		#bottom-panel .btn-purple{
 			width:100%;
 		}
 		
-		#top-panel .container{
+		#bottom-panel .container{
 			padding:0px;
 		}
 	}
 	
-	.top-panel-particle-title{
+	.bottom-panel-particle-title{
 		font-family:'Dosis', Helvetica;
 	}
 	
@@ -207,7 +207,7 @@
   </head>
   
   <body onload="start()">
-	<nav id="top-panel" class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+	<nav id="bottom-panel" class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -224,19 +224,19 @@
 			
                 <ul class="nav navbar-nav text-center">
 					<li>
-                        <a><span class="top-panel-particle-title">e<sup>-</sup></span></a>
+                        <a><span class="bottom-panel-particle-title">e<sup>-</sup></span></a>
                     </li>
                     <li>
                         <a><input type="number" value="0" id="num-electrons"></a>
                     </li>
 					<li>
-                        <a><span class="top-panel-particle-title">p</span></a>
+                        <a><span class="bottom-panel-particle-title">p</span></a>
                     </li>
                     <li>
                         <a><input type="number" value="0" id="num-protons"></a>
                     </li>
 					<li>
-                        <a><span class="top-panel-particle-title">n</span></a>
+                        <a><span class="bottom-panel-particle-title">n</span></a>
                     </li>
                     <li>
                         <a><input type="number" value="0" id="num-neutrons" ></a>
@@ -260,7 +260,7 @@
     <canvas id="glcanvas" width="640" height="480">
       Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.
     </canvas>
-	<nav id="bottom-panel" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<nav id="top-panel" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
 			<ul class="nav navbar-nav text-center">
 				<li class="col-sm-6 col-xs-12">
