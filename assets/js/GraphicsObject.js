@@ -7,7 +7,6 @@ function GraphicsObject(){
 	this.vt_buffer = "";
 	this.vertex_indices_buffer = "";
 	this.v_attr = "";
-	this.vt_attr = "";
 	this.shader_program = "";
 	
 	this.img = "";
@@ -62,10 +61,10 @@ GraphicsObject.prototype.draw = function(){
     // Draw the cube by binding the array buffer to the cube's vertices
   // array, setting attributes, and pushing it to GL.
   gl.bindBuffer(gl.ARRAY_BUFFER, this.v_buffer);
-  gl.vertexAttribPointer(vertexPositionAttribute, 3, gl.FLOAT, false, 0, 0);
+  gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, 0);
   
   gl.bindBuffer(gl.ARRAY_BUFFER, this.vt_buffer);
-  gl.vertexAttribPointer(this.vt_attr, 2, gl.FLOAT, false, 0, 0);
+  gl.vertexAttribPointer(1, 2, gl.FLOAT, false, 0, 0);
     
   gl.activeTexture(gl.TEXTURE0);
   gl.bindTexture(gl.TEXTURE_2D, this.texture);

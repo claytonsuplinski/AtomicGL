@@ -15,10 +15,19 @@ function initWebGL() {
 	}
 }
 
-function start() {
+function resize_canvas(){
 	canvas = document.getElementById("glcanvas");
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
+}
+
+window.onresize = function() {
+	resize_canvas();
+};
+
+function start() {
+	
+	resize_canvas();
 
 	initWebGL(canvas);
 
@@ -32,7 +41,7 @@ function start() {
 
 		init_project();
 
-		atom = new Atom(60, 1, 1);
+		atom = new Atom(60, 10, 10);
 
 		setInterval(drawScene, 15);
 	}
@@ -42,10 +51,11 @@ function drawScene() {
 
 	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-	perspectiveMatrix = makePerspective(45, canvas.width/canvas.height, 0.1, 5000.0);
+	perspectiveMatrix = makePerspective(45, window.innerWidth/window.innerHeight, 0.1, 5000.0);
 
 	loadIdentity();
 
+	mvRotate(ATOM.user.rotation.x, [1,0,0]);
 	mvRotate(ATOM.user.rotation.y, [0,1,0]);
 	mvTranslate([ATOM.user.position.x,0-ATOM.user.position.y,ATOM.user.position.z]);
 
