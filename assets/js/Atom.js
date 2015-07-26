@@ -1,10 +1,5 @@
 function Atom(num_electrons, num_protons, num_neutrons){
-	this.num_protons = num_protons;
-	this.num_neutrons = num_neutrons;
-	this.num_electrons = num_electrons;
-	this.nucleon_radius = 1.2*Math.pow(this.num_protons+this.num_neutrons, 1/3);
-	
-	this.load_atom();
+	this.set_new_atom(num_electrons, num_protons, num_neutrons);
 }
 
 Atom.prototype.load_atom = function(){
@@ -39,7 +34,7 @@ Atom.prototype.load_atom = function(){
 	}
 	
 	var tmp_num_electrons = this.num_electrons;
-	for(var i=0; i<Math.min(tmp_num_electrons, 2); i++){
+	for(var i=0; i<Math.min(tmp_num_electrons, 3); i++){
 		var tmp = new Particle();
 		tmp.type = "1s";
 		tmp.model = ATOM.models.electrons["1s"];
@@ -47,7 +42,7 @@ Atom.prototype.load_atom = function(){
 		tmp_num_electrons--;
 	}
 	
-	for(var i=0; i<Math.min(tmp_num_electrons, 2); i++){
+	for(var i=0; i<Math.min(tmp_num_electrons, 3); i++){
 		var tmp = new Particle();
 		tmp.type = "2s";
 		tmp.model = ATOM.models.electrons["2s"];
@@ -58,15 +53,18 @@ Atom.prototype.load_atom = function(){
 };
 
 Atom.prototype.set_new_atom = function(num_e, num_p, num_n){
-	if(!isNaN(num_e)){
-		this.num_electrons = parseInt(num_e);	
-	}
-	if(!isNaN(num_p)){
-		this.num_protons = parseInt(num_p);	
-	}
-	if(!isNaN(num_n)){
-		this.num_neutrons = parseInt(num_n);	
-	}
+	num_e = Math.abs(parseInt(num_e));
+	num_p = Math.abs(parseInt(num_p));
+	num_n = Math.abs(parseInt(num_n));
+
+	this.num_electrons = (isNaN(num_e) ? 0 : num_e);
+	
+	if(!isNaN(num_p)){this.num_protons = Math.abs(parseInt(num_p));}
+	else{this.num_protons=0;}
+	
+	if(!isNaN(num_n)){this.num_neutrons = Math.abs(parseInt(num_n));}
+	else{this.num_neutrons=0;}
+	
 	this.nucleon_radius = 1.2*Math.pow(this.num_protons+this.num_neutrons, 1/3);
 	
 	this.load_atom();

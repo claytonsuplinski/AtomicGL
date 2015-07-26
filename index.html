@@ -27,22 +27,31 @@
 		font-family:'Poiret One', Helvetica;
 	}
 	
+	input[type=number] {
+		-webkit-appearance: textfield;
+		-moz-appearance: textfield;
+		-ms-appearance: textfield;
+		-o-appearance: textfield;
+		appearance: textfield;
+	}
+	
 	.btn-purple{
-		background:#5E36DE;
+		background:rgba(164, 144, 228, 0.49);
+		color:white !important;
+		opacity:0.4;
 	}
 	
 	.btn-purple:hover{
-		background:#4E29C6;
-		color:white;
+		opacity:1;
 	}
 	
 	#bottom-panel{
-		background:rgba(30, 18, 44, 0.62);
+		background:rgba(102, 71, 138, 0.06);
 		border-width:0px;
 	}
 	
 	#bottom-panel input{
-		background:rgba(255,255,255,0.3);
+		background:rgba(255,255,255,0.1);
 		border-width:0px;
 		text-align:center;
 		color:white;
@@ -67,6 +76,7 @@
 	@media only screen and (max-width : 768px) {
 		#bs-navbar-collapse-1{
 			width:100%;
+			background:#060911;
 		}
 		
 		#bottom-panel input{
@@ -169,7 +179,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html" style="color:#7BE974">AtomicGL</a>
+                <a class="navbar-brand" href="index.html" style="color:#A38BF2">AtomicGL</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse pull-right" id="bs-navbar-collapse-1">
@@ -179,19 +189,19 @@
                         <a><span class="bottom-panel-particle-title">e<sup>-</sup></span></a>
                     </li>
                     <li>
-                        <a><input id="num-electrons"></a>
+                        <a><input type="number" value="0" id="num-electrons"></a>
                     </li>
 					<li>
                         <a><span class="bottom-panel-particle-title">p</span></a>
                     </li>
                     <li>
-                        <a><input id="num-protons"></a>
+                        <a><input type="number" value="0" id="num-protons"></a>
                     </li>
 					<li>
                         <a><span class="bottom-panel-particle-title">n</span></a>
                     </li>
                     <li>
-                        <a><input id="num-neutrons"></a>
+                        <a><input type="number" value="0" id="num-neutrons" ></a>
                     </li>
 					<li>
                         <a>Update</a>
