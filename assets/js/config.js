@@ -2,6 +2,9 @@ ATOM = {};
 
 ATOM.constants = {};
 ATOM.constants.to_radians = Math.PI/180;
+ATOM.constants.max_electrons = 10;
+ATOM.constants.max_protons = 200;
+ATOM.constants.max_neutrons = 200;
 
 ATOM.keys_pressed = [];
 
@@ -34,6 +37,10 @@ function init_models(){
 	ATOM.models.electrons["2s"] = new Sphere(0.1, 8, 8);
 	ATOM.models.electrons["2s"].set_texture("./assets/textures/electron_2s.png");
 	ATOM.models.electrons["2s"].set_shader(basic_shader);
+	
+	ATOM.models.electrons["2p"] = new Sphere(0.1, 8, 8);
+	ATOM.models.electrons["2p"].set_texture("./assets/textures/electron_2p.png");
+	ATOM.models.electrons["2p"].set_shader(basic_shader);	
 }
 
 function init_project(){

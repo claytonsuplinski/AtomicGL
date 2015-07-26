@@ -17,13 +17,11 @@ function initWebGL() {
 
 function resize_canvas(){
 	canvas = document.getElementById("glcanvas");
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
+	canvas.style.width = window.innerWidth;
+	canvas.style.height = window.innerHeight;
 }
 
-window.onresize = function() {
-	resize_canvas();
-};
+window.addEventListener('resize', resize_canvas);
 
 function start() {
 	
