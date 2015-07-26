@@ -3,8 +3,11 @@ ATOM = {};
 ATOM.constants = {};
 ATOM.constants.to_radians = Math.PI/180;
 ATOM.constants.max_electrons = 10;
-ATOM.constants.max_protons = 200;
+ATOM.constants.max_protons = 118;
 ATOM.constants.max_neutrons = 200;
+
+ATOM.data = {};
+ATOM.data.elements = [];
 
 ATOM.keys_pressed = [];
 
@@ -43,6 +46,17 @@ function init_models(){
 	ATOM.models.electrons["2p"].set_shader(basic_shader);	
 }
 
+function load_elements_data(){
+	$.ajaxSetup({async:false});
+	$.getJSON( "./assets/json/elements.json", function( data ) {
+		data.elements.forEach(function (element){
+			ATOM.data.elements.push(element);
+		});
+	});
+	$.ajaxSetup({async:true});
+}
+
 function init_project(){
 	init_models();
+	load_elements_data();
 }
