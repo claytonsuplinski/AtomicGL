@@ -508,7 +508,7 @@
 			"name": "Lanthanum",
 			"symbol": "La",
 			"atomic-number": 57,
-			"group" : null,
+			"group" : "Lanthanide Series",
 			"period" : 6,
 			"molar-mass": 138.9055
 		},
@@ -517,7 +517,7 @@
 			"name": "Cerium",
 			"symbol": "Ce",
 			"atomic-number": 58,
-			"group" : null,
+			"group" : "Lanthanide Series",
 			"period" : 6,
 			"molar-mass": 140.116
 		},
@@ -526,7 +526,7 @@
 			"name": "Praseodymium",
 			"symbol": "Pr",
 			"atomic-number": 59,
-			"group" : null,
+			"group" : "Lanthanide Series",
 			"period" : 6,
 			"molar-mass": 140.90765
 		},
@@ -535,7 +535,7 @@
 			"name": "Neodymium",
 			"symbol": "Nd",
 			"atomic-number": 60,
-			"group" : null,
+			"group" : "Lanthanide Series",
 			"period" : 6,
 			"molar-mass": 144.24
 		},
@@ -544,7 +544,7 @@
 			"name": "Promethium",
 			"symbol": "Pm",
 			"atomic-number": 61,
-			"group" : null,
+			"group" : "Lanthanide Series",
 			"period" : 6,
 			"molar-mass": 145
 		},
@@ -553,7 +553,7 @@
 			"name": "Samarium",
 			"symbol": "Sm",
 			"atomic-number": 62,
-			"group" : null,
+			"group" : "Lanthanide Series",
 			"period" : 6,
 			"molar-mass": 150.36
 		},
@@ -562,7 +562,7 @@
 			"name": "Europium",
 			"symbol": "Eu",
 			"atomic-number": 63,
-			"group" : null,
+			"group" : "Lanthanide Series",
 			"period" : 6,
 			"molar-mass": 151.964
 		},
@@ -571,7 +571,7 @@
 			"name": "Gadollnium",
 			"symbol": "Gd",
 			"atomic-number": 64,
-			"group" : null,
+			"group" : "Lanthanide Series",
 			"period" : 6,
 			"molar-mass": 157.25
 		},
@@ -580,7 +580,7 @@
 			"name": "Terbium",
 			"symbol": "Tb",
 			"atomic-number": 65,
-			"group" : null,
+			"group" : "Lanthanide Series",
 			"period" : 6,
 			"molar-mass": 158.92534
 		},
@@ -589,7 +589,7 @@
 			"name": "Dysprosium",
 			"symbol": "Dy",
 			"atomic-number": 66,
-			"group" : null,
+			"group" : "Lanthanide Series",
 			"period" : 6,
 			"molar-mass": 162.500
 		},
@@ -598,7 +598,7 @@
 			"name": "Holmium",
 			"symbol": "Ho",
 			"atomic-number": 67,
-			"group" : null,
+			"group" : "Lanthanide Series",
 			"period" : 6,
 			"molar-mass": 164.93032
 		},
@@ -607,7 +607,7 @@
 			"name": "Erbium",
 			"symbol": "Er",
 			"atomic-number": 68,
-			"group" : null,
+			"group" : "Lanthanide Series",
 			"period" : 6,
 			"molar-mass": 167.259
 		},
@@ -616,7 +616,7 @@
 			"name": "Thulium",
 			"symbol": "Tm",
 			"atomic-number": 69,
-			"group" : null,
+			"group" : "Lanthanide Series",
 			"period" : 6,
 			"molar-mass": 168.93421
 		},
@@ -625,7 +625,7 @@
 			"name": "Ytterbium",
 			"symbol": "Yb",
 			"atomic-number": 70,
-			"group" : null,
+			"group" : "Lanthanide Series",
 			"period" : 6,
 			"molar-mass": 173.04
 		},
@@ -796,7 +796,7 @@
 			"name": "Actinium",
 			"symbol": "Ac",
 			"atomic-number": 89,
-			"group" : null,
+			"group" : "Actinide Series",
 			"period" : 7,
 			"molar-mass": 227
 		},
@@ -805,7 +805,7 @@
 			"name": "Thorium",
 			"symbol": "Th",
 			"atomic-number": 90,
-			"group" : null,
+			"group" : "Actinide Series",
 			"period" : 7,
 			"molar-mass": 232.0381
 		},
@@ -814,7 +814,7 @@
 			"name": "Protactinium",
 			"symbol": "Pa",
 			"atomic-number": 91,
-			"group" : null,
+			"group" : "Actinide Series",
 			"period" : 7,
 			"molar-mass": 231.03588
 		},
@@ -823,7 +823,7 @@
 			"name": "Uranium",
 			"symbol": "U",
 			"atomic-number": 92,
-			"group" : null,
+			"group" : "Actinide Series",
 			"period" : 7,
 			"molar-mass": 238.02891
 		},
@@ -832,7 +832,7 @@
 			"name": "Neptunium",
 			"symbol": "Np",
 			"atomic-number": 93,
-			"group" : null,
+			"group" : "Actinide Series",
 			"period" : 7,
 			"molar-mass": 237
 		},
@@ -841,7 +841,7 @@
 			"name": "Plutonium",
 			"symbol": "Pu",
 			"atomic-number": 94,
-			"group" : null,
+			"group" : "Actinide Series",
 			"period" : 7,
 			"molar-mass": 244
 		},
@@ -850,7 +850,7 @@
 			"name": "Americium",
 			"symbol": "Am",
 			"atomic-number": 95,
-			"group" : null,
+			"group" : "Actinide Series",
 			"period" : 7,
 			"molar-mass": 243
 		},
@@ -859,7 +859,7 @@
 			"name": "Curium",
 			"symbol": "Cm",
 			"atomic-number": 96,
-			"group" : null,
+			"group" : "Actinide Series",
 			"period" : 7,
 			"molar-mass": 247
 		},
@@ -868,7 +868,7 @@
 			"name": "Berkelium",
 			"symbol": "Bk",
 			"atomic-number": 97,
-			"group" : null,
+			"group" : "Actinide Series",
 			"period" : 7,
 			"molar-mass": 247
 		},
@@ -877,7 +877,7 @@
 			"name": "Californium",
 			"symbol": "Cf",
 			"atomic-number": 98,
-			"group" : null,
+			"group" : "Actinide Series",
 			"period" : 7,
 			"molar-mass": 251
 		},
@@ -886,7 +886,7 @@
 			"name": "Einsteinium",
 			"symbol": "Es",
 			"atomic-number": 99,
-			"group" : null,
+			"group" : "Actinide Series",
 			"period" : 7,
 			"molar-mass": 254
 		},
@@ -895,7 +895,7 @@
 			"name": "Fermium",
 			"symbol": "Fm",
 			"atomic-number": 100,
-			"group" : null,
+			"group" : "Actinide Series",
 			"period" : 7,
 			"molar-mass": 257
 		},
@@ -904,7 +904,7 @@
 			"name": "Mendelevium",
 			"symbol": "Md",
 			"atomic-number": 101,
-			"group" : null,
+			"group" : "Actinide Series",
 			"period" : 7,
 			"molar-mass": 260
 		},
@@ -913,7 +913,7 @@
 			"name": "Nobelium",
 			"symbol": "No",
 			"atomic-number": 102,
-			"group" : null,
+			"group" : "Actinide Series",
 			"period" : 7,
 			"molar-mass": 259
 		},

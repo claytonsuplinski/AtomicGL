@@ -8,6 +8,27 @@ ATOM.constants.max_neutrons = 200;
 
 ATOM.data = {};
 ATOM.data.elements = [];
+ATOM.data.group_names = [
+	{"trivial": "", "CAS": ""},
+	{"trivial": "Alkali Metals", "CAS": "IA"},
+	{"trivial": "Alkaline Earth Metals", "CAS": "IIA"},
+	{"trivial": "Scandium Group", "CAS": "IIIB"},
+	{"trivial": "Titanium Group", "CAS": "IVB"},
+	{"trivial": "Vanadium Group", "CAS": "VB"},
+	{"trivial": "Chromium Group", "CAS": "VIB"},
+	{"trivial": "Manganese Group", "CAS": "VIIB"},
+	{"trivial": "Iron Group", "CAS": "VIIIB"},
+	{"trivial": "Cobalt Group", "CAS": "VIIIB"},
+	{"trivial": "Nickel Group", "CAS": "VIIIB"},
+	{"trivial": "Coinage Metals", "CAS": "IB"},
+	{"trivial": "Volatile Metals", "CAS": "IIB"},
+	{"trivial": "Icosagens", "CAS": "IIIA"},
+	{"trivial": "Crystallogens", "CAS": "IVA"},
+	{"trivial": "Pnictogens", "CAS": "VA"},
+	{"trivial": "Chalcogens", "CAS": "VIA"},
+	{"trivial": "Halogens", "CAS": "VIIA"},
+	{"trivial": "Noble Gases", "CAS": "VIIIA"}
+];
 
 ATOM.keys_pressed = [];
 

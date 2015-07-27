@@ -45,7 +45,7 @@ Atom.prototype.load_atom = function(){
 	}
 	tmp_num_electrons -= 2;
 	
-	tmp_atomic_orbitals += "<sup>"+curr_atomic_orbital_count+"</sup>" + (tmp_num_electrons > 0 ? " 2s" : "");
+	tmp_atomic_orbitals += "<sup>"+curr_atomic_orbital_count+"</sup>" + (tmp_num_electrons > 0 ? "&nbsp;2s" : "");
 	curr_atomic_orbital_count = 0;
 	
 	if(tmp_num_electrons > 0){
@@ -58,7 +58,7 @@ Atom.prototype.load_atom = function(){
 		}
 		tmp_num_electrons -= 2;
 		
-		tmp_atomic_orbitals += "<sup>"+curr_atomic_orbital_count+"</sup>" + (tmp_num_electrons > 0 ? " 2p" : "");
+		tmp_atomic_orbitals += "<sup>"+curr_atomic_orbital_count+"</sup>" + (tmp_num_electrons > 0 ? "&nbsp;2p" : "");
 		curr_atomic_orbital_count = 0;
 	}
 	
@@ -97,7 +97,7 @@ Atom.prototype.load_atom = function(){
 		
 		tmp_num_electrons -= 6;
 	
-		tmp_atomic_orbitals += "<sup>"+curr_atomic_orbital_count+"</sup>" + (tmp_num_electrons > 0 ? " 3s" : "");
+		tmp_atomic_orbitals += "<sup>"+curr_atomic_orbital_count+"</sup>" + (tmp_num_electrons > 0 ? "&nbsp;3s" : "");
 		curr_atomic_orbital_count = 0;
 	}
 	
@@ -105,6 +105,18 @@ Atom.prototype.load_atom = function(){
 	$("#element-abbr").html((this.num_protons > 0 ? ATOM.data.elements[this.num_protons-1].symbol : ""));
 	$("#atomic-number").html(this.num_protons);
 	$("#atomic-mass").html(this.num_protons+this.num_neutrons);
+	
+	var tmp_group = (this.num_protons > 0 ? parseInt(ATOM.data.elements[this.num_protons-1].group) : 0);
+	if(!isNaN(tmp_group)){
+		var tmp_group_name = ATOM.data.group_names[tmp_group];
+		$("#element-group").html("Group "+tmp_group 
+			+ " <span class='cas-group-name'>"+tmp_group_name.CAS+"</span>"
+			+ " <span class='group-name'>" + tmp_group_name.trivial + "</span>");
+	}
+	else{$("#element-group").html(ATOM.data.elements[this.num_protons-1].group);}
+	
+	var tmp_period = (this.num_protons > 0 ? parseInt(ATOM.data.elements[this.num_protons-1].period): 0);
+	$("#element-period").html("Period "+tmp_period);
 };
 
 Atom.prototype.set_new_atom = function(num_e, num_p, num_n){
