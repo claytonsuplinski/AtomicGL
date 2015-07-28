@@ -2,7 +2,7 @@ ATOM = {};
 
 ATOM.constants = {};
 ATOM.constants.to_radians = Math.PI/180;
-ATOM.constants.max_electrons = 10;
+ATOM.constants.max_electrons = 18;
 ATOM.constants.max_protons = 118;
 ATOM.constants.max_neutrons = 200;
 
@@ -54,17 +54,13 @@ function init_models(){
 	ATOM.models.neutrons.set_texture("./assets/textures/neutron.png");
 	ATOM.models.neutrons.set_shader(basic_shader);
 
-	ATOM.models.electrons["1s"] = new Sphere(0.1, 8, 8);
-	ATOM.models.electrons["1s"].set_texture("./assets/textures/electron_1s.png");
-	ATOM.models.electrons["1s"].set_shader(basic_shader);
+	ATOM.models.electrons["s"] = new Sphere(0.1, 8, 8);
+	ATOM.models.electrons["s"].set_texture("./assets/textures/electron_s.png");
+	ATOM.models.electrons["s"].set_shader(basic_shader);
 	
-	ATOM.models.electrons["2s"] = new Sphere(0.1, 8, 8);
-	ATOM.models.electrons["2s"].set_texture("./assets/textures/electron_2s.png");
-	ATOM.models.electrons["2s"].set_shader(basic_shader);
-	
-	ATOM.models.electrons["2p"] = new Sphere(0.1, 8, 8);
-	ATOM.models.electrons["2p"].set_texture("./assets/textures/electron_2p.png");
-	ATOM.models.electrons["2p"].set_shader(basic_shader);	
+	ATOM.models.electrons["p"] = new Sphere(0.1, 8, 8);
+	ATOM.models.electrons["p"].set_texture("./assets/textures/electron_p.png");
+	ATOM.models.electrons["p"].set_shader(basic_shader);	
 }
 
 function load_elements_data(){

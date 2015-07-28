@@ -39,7 +39,7 @@ Atom.prototype.load_atom = function(){
 	for(var i=0; i<Math.min(tmp_num_electrons, 2); i++){
 		var tmp = new Particle();
 		tmp.type = "1s";
-		tmp.model = ATOM.models.electrons["1s"];
+		tmp.model = ATOM.models.electrons["s"];
 		this.electrons.push(tmp);
 		curr_atomic_orbital_count++;
 	}
@@ -52,7 +52,7 @@ Atom.prototype.load_atom = function(){
 		for(var i=0; i<Math.min(tmp_num_electrons, 2); i++){
 			var tmp = new Particle();
 			tmp.type = "2s";
-			tmp.model = ATOM.models.electrons["2s"];
+			tmp.model = ATOM.models.electrons["s"];
 			this.electrons.push(tmp);
 			curr_atomic_orbital_count++;
 		}
@@ -66,8 +66,61 @@ Atom.prototype.load_atom = function(){
 		for(var i=0; i<Math.min(tmp_num_electrons, 6); i++){
 			var tmp = new Particle();
 			tmp.type = "2p";
-			tmp.model = ATOM.models.electrons["2p"];
+			tmp.model = ATOM.models.electrons["p"];
 			var tmp_offset = 15;
+			switch(i){
+				case 0:
+					tmp.position = [this.nucleon_radius + tmp_offset, 0, 0];
+					break;
+				case 1:
+					tmp.position = [-1 * (this.nucleon_radius + tmp_offset), 0, 0];
+					break;
+				case 2:
+					tmp.position = [0, this.nucleon_radius + tmp_offset, 0];
+					break;
+				case 3:
+					tmp.position = [0, -1 * (this.nucleon_radius + tmp_offset), 0];
+					break;
+				case 4:
+					tmp.position = [0, 0, this.nucleon_radius + tmp_offset];
+					break;
+				case 5:
+					tmp.position = [0, 0, -1 * (this.nucleon_radius + tmp_offset)];
+					break;
+				default:
+					tmp.position = [this.nucleon_radius + tmp_offset, 0, 0];
+					break;
+			}
+			this.electrons.push(tmp);
+			curr_atomic_orbital_count++;
+		}
+		
+		tmp_num_electrons -= 6;
+	
+		tmp_atomic_orbitals += "<sup>"+curr_atomic_orbital_count+"</sup>" + (tmp_num_electrons > 0 ? "&nbsp;3s" : "");
+		curr_atomic_orbital_count = 0;
+	}
+	
+	if(tmp_num_electrons > 0){
+		for(var i=0; i<Math.min(tmp_num_electrons, 2); i++){
+			var tmp = new Particle();
+			tmp.type = "3s";
+			tmp.model = ATOM.models.electrons["s"];
+			this.electrons.push(tmp);
+			curr_atomic_orbital_count++;
+		}
+		tmp_num_electrons -= 2;
+		
+		tmp_atomic_orbitals += "<sup>"+curr_atomic_orbital_count+"</sup>" + (tmp_num_electrons > 0 ? "&nbsp;3p" : "");
+		curr_atomic_orbital_count = 0;
+	}
+	
+	if(tmp_num_electrons > 0){
+		for(var i=0; i<Math.min(tmp_num_electrons, 6); i++){
+			var tmp = new Particle();
+			tmp.type = "3p";
+			tmp.model = ATOM.models.electrons["p"];
+			var tmp_offset = 25;
 			switch(i){
 				case 0:
 					tmp.position = [this.nucleon_radius + tmp_offset, 0, 0];
@@ -146,6 +199,12 @@ Atom.prototype.draw = function(){
 			this.electrons[i].spherical_position = [this.nucleon_radius + 10,360*Math.random(),180*Math.random()];
 		}
 		else if(this.electrons[i].type == "2p"){
+			this.electrons[i].spherical_position = [5,360*Math.random(),180*Math.random()];
+		}
+		else if(this.electrons[i].type == "3s"){
+			this.electrons[i].spherical_position = [this.nucleon_radius + 20,360*Math.random(),180*Math.random()];
+		}
+		else if(this.electrons[i].type == "3p"){
 			this.electrons[i].spherical_position = [5,360*Math.random(),180*Math.random()];
 		}
 		this.electrons[i].draw();
