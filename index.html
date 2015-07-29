@@ -73,8 +73,9 @@
 	
 	#bottom-panel .btn-purple{
 		border-radius:0px;
-		min-width:80px;
+		min-width:40px;
 		border-width:0px;
+		margin-top:-2px;
 	}
 	
 	.btn-update{
@@ -126,8 +127,21 @@
 		font-family:'Dosis', Helvetica;
 	}
 	
-	#top-panel .nav-table td *{
+	#top-panel .nav-table td *, .modal *{
 		font-family:'Dosis', Helvetica;
+	}
+	
+	.modal-header, .modal-footer{
+		background-color: #333E48;
+		color:white;
+		border-width:0px;
+	}
+	
+	.modal-body{
+		background-color: #656F78 !important;
+		color:white;
+		max-height:300px;
+		overflow:auto;
 	}
 
 	/* Small Devices, Tablets */
@@ -149,6 +163,11 @@
 		
 		#bottom-panel .btn-purple{
 			width:100%;
+		}
+		
+		.btn-select-element{
+			margin-top: 5px;
+			margin-bottom:-10px !important;
 		}
 		
 		#bottom-panel .container{
@@ -173,6 +192,30 @@
 	.group-name{
 		color:#555;
 		padding-left:5px;
+	}
+	
+	.select-individual-element{
+		background:#333;
+		color:white;
+		padding:10px;
+		padding-top:10px;
+		padding-bottom:10px;
+		margin-bottom:10px;
+		overflow:auto;
+		cursor:pointer;
+	}
+	
+	.select-individual-element:hover{
+		background:#222;
+	}
+	
+	.select-individual-element table{
+		width:100%;
+	}
+	
+	.select-individual-element td{
+		padding:0px 10px;
+		color:white;
 	}
 	
 	</style>
@@ -265,6 +308,13 @@
             <div class="collapse navbar-collapse pull-right" id="bs-navbar-collapse-1">
 			
                 <ul class="nav navbar-nav text-center">
+					<li class="hidden-xs">
+						<a>
+							<button class="btn btn-purple btn-update btn-select-element" data-toggle="modal" data-target="#myModal">
+								<i class="fa fa-list-ul"></i>
+							</button>
+						</a>
+                    </li>
 					<li>
                         <a><span class="bottom-panel-particle-title">e<sup>-</sup></span></a>
                     </li>
@@ -285,7 +335,7 @@
                     </li>
 					<li>
 						<a>
-							<button class="btn btn-sm btn-purple btn-update" onclick="atom.set_new_atom($('#num-electrons').val(), $('#num-protons').val(), $('#num-neutrons').val());">
+							<button class="btn btn-purple btn-update" onclick="atom.set_new_atom($('#num-electrons').val(), $('#num-protons').val(), $('#num-neutrons').val());">
 								<i class="fa fa-refresh"></i>
 							</button>
 						</a>
@@ -305,15 +355,13 @@
 				<tr>
 					<td class="nav-table-element">
 						<table class="atomic-abbr-table">
-							<tr><td id="atomic-mass">0</td></tr>
-							<tr><td id="atomic-number">0</td></tr>
+							<tr><td id="atomic-mass"></td></tr>
+							<tr><td id="atomic-number"></td></tr>
 						</table>
 						<span id="element-abbr"></span>
 					</td>
 					<td class="nav-table-element">
-						<span id="atomic-orbitals">
-							1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>3</sup>
-						</span>
+						<span id="atomic-orbitals"></span>
 					</td>
 					<td class="nav-table-element" id="element-group"></td>
 					<td class="nav-table-element" id="element-period"></td>
@@ -322,5 +370,23 @@
         </div>
         <!-- /.container -->
     </nav>
+	
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><div class="btn btn-sm btn-danger">X</div></button>
+					<h4 class="modal-title">Select Element</h4>
+				</div>
+				<div class="modal-body" id="list-of-elements"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
   </body>
 </html>

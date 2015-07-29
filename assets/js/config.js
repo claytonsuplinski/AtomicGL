@@ -65,11 +65,32 @@ function init_models(){
 
 function load_elements_data(){
 	$.ajaxSetup({async:false});
+	var tmp_modal_html = "";
 	$.getJSON( "./assets/json/elements.json", function( data ) {
 		data.elements.forEach(function (element){
 			ATOM.data.elements.push(element);
+			tmp_modal_html += "<div class='col-xs-12 select-individual-element' ";
+				tmp_modal_html += "onclick='atom.set_new_atom("+element["atomic-number"]+", "
+						+element["atomic-number"]+", "
+						+(parseInt(element["molar-mass"] - element["atomic-number"]))+");' data-dismiss='modal'>";
+				tmp_modal_html += "<table><tr>";
+					tmp_modal_html += "<td style='width:10%;'>";
+						tmp_modal_html += element["atomic-number"];
+					tmp_modal_html += "</td>";
+					tmp_modal_html += "<td style='width:10%;'>";
+						tmp_modal_html += element.symbol;
+					tmp_modal_html += "</td>";
+					tmp_modal_html += "<td style='width:40%;text-align:center;'>";
+						tmp_modal_html += element.name;
+					tmp_modal_html += "</td>";
+					tmp_modal_html += "<td style='width:40%;text-align:center;'>";
+						tmp_modal_html += element["molar-mass"];
+					tmp_modal_html += "</td>";
+				tmp_modal_html += "</tr></table>";
+			tmp_modal_html += "</div>";
 		});
 	});
+	$("#list-of-elements").html(tmp_modal_html);
 	$.ajaxSetup({async:true});
 }
 
