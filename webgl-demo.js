@@ -39,7 +39,7 @@ function start() {
 
 		init_project();
 
-		atom = new Atom(60, 10, 10);
+		atom = new Atom(200, 200, 200);
 
 		setInterval(drawScene, 15);
 	}
