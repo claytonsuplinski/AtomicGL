@@ -33,6 +33,7 @@ ATOM.data.group_names = [
 ATOM.keys_pressed = [];
 
 ATOM.user = {};
+ATOM.user.free_mode = false;
 ATOM.user.position = {};
 ATOM.user.position.x = 0;
 ATOM.user.position.y = 0;
@@ -40,6 +41,12 @@ ATOM.user.position.z = -20;
 ATOM.user.rotation = {};
 ATOM.user.rotation.x = 0;
 ATOM.user.rotation.y = 0;
+
+ATOM.mouse = {};
+ATOM.mouse.left_down = false;
+ATOM.mouse.right_down = false;
+ATOM.mouse.x = "";
+ATOM.mouse.y = "";
 
 ATOM.models = {};
 
