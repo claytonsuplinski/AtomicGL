@@ -101,7 +101,7 @@ function init_mouse_controls(){
 				}
 			}
 			if(ATOM.mouse.right_down){
-				ATOM.user.position.z += (event.pageY - ATOM.mouse.y);
+				ATOM.user.position.z -= (event.pageY - ATOM.mouse.y);
 				if(ATOM.user.position.z > 0){
 					ATOM.user.position.z = 0;
 				}
@@ -113,7 +113,8 @@ function init_mouse_controls(){
 			ATOM.mouse.y = event.pageY;
 		})
 		.bind('mousewheel DOMMouseScroll', function (event){
-			ATOM.user.position.z += event.originalEvent.wheelDelta/4;
+			var tmp_delta = parseInt(parseInt(event.originalEvent.wheelDelta)/4 || -parseInt(event.originalEvent.detail)*8);
+			ATOM.user.position.z += tmp_delta/4;
 			if(ATOM.user.position.z > 0){
 				ATOM.user.position.z = 0;
 			}

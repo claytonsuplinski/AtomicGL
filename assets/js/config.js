@@ -4,7 +4,7 @@ ATOM.constants = {};
 ATOM.constants.to_radians = Math.PI/180;
 ATOM.constants.max_electrons = 120;
 ATOM.constants.max_protons = 118;
-ATOM.constants.max_neutrons = 118;
+ATOM.constants.max_neutrons = 190;
 
 ATOM.data = {};
 ATOM.data.elements = [];
