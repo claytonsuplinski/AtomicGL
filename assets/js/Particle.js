@@ -4,6 +4,8 @@ function Particle(){
 	this.spherical_position = [0,0,0];
 	this.model = "";
 	this.type = "";
+	this.radius_offset = 0;
+	this.level = 0;
 };
 
 Particle.prototype.draw = function(){

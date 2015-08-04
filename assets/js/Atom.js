@@ -3,7 +3,7 @@ function Atom(num_electrons, num_protons, num_neutrons){
 	this.atomic_orbitals = "";
 }
 
-Atom.prototype.load_orbital = function(tmp_num_electrons, orbital, type, offset){
+Atom.prototype.load_orbital = function(tmp_num_electrons, level, orbital, offset){
 	var num_electrons = 0;
 	if(tmp_num_electrons > 0){
 		switch(orbital){
@@ -11,7 +11,8 @@ Atom.prototype.load_orbital = function(tmp_num_electrons, orbital, type, offset)
 				num_electrons = Math.min(tmp_num_electrons, 2);
 				for(var i=0; i<num_electrons; i++){
 					var tmp = new Particle();
-					tmp.type = type;
+					tmp.type = level+orbital;
+					tmp.radius_offset = offset;
 					tmp.model = ATOM.models.electrons[orbital];
 					this.electrons.push(tmp);
 				}
@@ -21,7 +22,7 @@ Atom.prototype.load_orbital = function(tmp_num_electrons, orbital, type, offset)
 				num_electrons = Math.min(tmp_num_electrons, 6);
 				for(var i=0; i<num_electrons; i++){
 					var tmp = new Particle();
-					tmp.type = type;
+					tmp.type = level+orbital;
 					tmp.model = ATOM.models.electrons[orbital];
 					var tmp_offset = offset;
 					var tmp_rad = this.nucleon_radius + tmp_offset;
@@ -57,7 +58,7 @@ Atom.prototype.load_orbital = function(tmp_num_electrons, orbital, type, offset)
 				num_electrons = Math.min(tmp_num_electrons, 10);
 				for(var i=0; i<num_electrons; i++){
 					var tmp = new Particle();
-					tmp.type = type;
+					tmp.type = level+orbital;
 					tmp.model = ATOM.models.electrons[orbital];
 					var tmp_offset = offset;
 					var tmp_rad = this.nucleon_radius + tmp_offset;
@@ -122,7 +123,7 @@ Atom.prototype.load_orbital = function(tmp_num_electrons, orbital, type, offset)
 				num_electrons = Math.min(tmp_num_electrons, 14);
 				for(var i=0; i<num_electrons; i++){
 					var tmp = new Particle();
-					tmp.type = type;
+					tmp.type = level+orbital;
 					tmp.model = ATOM.models.electrons[orbital];
 					var tmp_offset = offset;
 					var tmp_rad = this.nucleon_radius + tmp_offset;
@@ -204,7 +205,7 @@ Atom.prototype.load_orbital = function(tmp_num_electrons, orbital, type, offset)
 				tmp_num_electrons -= 14;
 				break;
 		}
-		this.atomic_orbitals += (tmp_num_electrons > 0 ? "" : "</span>")+type+"<sup>"+num_electrons+"</sup>&nbsp;";
+		this.atomic_orbitals += (tmp_num_electrons > 0 ? "" : "</span>")+level+orbital+"<sup>"+num_electrons+"</sup>&nbsp;";
 		return tmp_num_electrons;
 	}
 };
@@ -243,26 +244,26 @@ Atom.prototype.load_atom = function(){
 	var tmp_num_electrons = this.num_electrons;
 	this.atomic_orbitals = "<span class='hidden-sm hidden-xs'>";
 	
-	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "s", "1s", 0);	
-	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "s", "2s", 0);
-	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "p", "2p", 15);
-	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "s", "3s", 0);
-	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "p", "3p", 25);
-	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "s", "4s", 0);
-	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "d", "3d", 35);
-	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "p", "4p", 40);
-	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "s", "5s", 0);
-	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "d", "4d", 50);
-	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "p", "5p", 55);
-	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "s", "6s", 0);
-	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "f", "4f", 65);
-	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "d", "5d", 70);
-	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "p", "6p", 75);
-	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "s", "7s", 0);
-	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "f", "5f", 85);
-	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "d", "6d", 90);
-	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "p", "7p", 95);
-	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "s", "8s", 0);
+	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "1", "s", 5);	
+	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "2", "s", 10);
+	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "2", "p", 15);
+	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "3", "s", 20);
+	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "3", "p", 25);
+	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "4", "s", 30);
+	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "3", "d", 35);
+	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "4", "p", 40);
+	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "5", "s", 45);
+	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "4", "d", 50);
+	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "5", "p", 55);
+	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "6", "s", 60);
+	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "4", "f", 65);
+	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "5", "d", 70);
+	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "6", "p", 75);
+	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "7", "s", 80);
+	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "5", "f", 85);
+	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "6", "d", 90);
+	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "7", "p", 95);
+	tmp_num_electrons = this.load_orbital(tmp_num_electrons, "8", "s", 100);
 
 	tmp_atomic_orbitals = this.atomic_orbitals;
 	
@@ -324,36 +325,16 @@ Atom.prototype.set_new_atom = function(num_e, num_p, num_n){
 };
 
 Atom.prototype.draw = function(){
-	for(var i=0; i<this.electrons.length; i++){
-		if(this.electrons[i].type[1] == "p" || this.electrons[i].type[1] == "d" || this.electrons[i].type[1] == "f"){
-			this.electrons[i].spherical_position = [5,360*Math.random(),180*Math.random()];
+	var self = this;
+	this.electrons.forEach(function(electron){
+		if(electron.type[1] == "p" || electron.type[1] == "d" || electron.type[1] == "f"){
+			electron.spherical_position = [5,360*Math.random(),180*Math.random()];
 		}
-		else if(this.electrons[i].type == "1s"){
-			this.electrons[i].spherical_position = [this.nucleon_radius + 5,360*Math.random(),180*Math.random()];
+		else if(electron.type[1] == "s"){
+			electron.spherical_position = [self.nucleon_radius + electron.radius_offset,360*Math.random(),180*Math.random()];
 		}
-		else if(this.electrons[i].type == "2s"){
-			this.electrons[i].spherical_position = [this.nucleon_radius + 10,360*Math.random(),180*Math.random()];
-		}
-		else if(this.electrons[i].type == "3s"){
-			this.electrons[i].spherical_position = [this.nucleon_radius + 20,360*Math.random(),180*Math.random()];
-		}
-		else if(this.electrons[i].type == "4s"){
-			this.electrons[i].spherical_position = [this.nucleon_radius + 30,360*Math.random(),180*Math.random()];
-		}
-		else if(this.electrons[i].type == "5s"){
-			this.electrons[i].spherical_position = [this.nucleon_radius + 45,360*Math.random(),180*Math.random()];
-		}
-		else if(this.electrons[i].type == "6s"){
-			this.electrons[i].spherical_position = [this.nucleon_radius + 60,360*Math.random(),180*Math.random()];
-		}
-		else if(this.electrons[i].type == "7s"){
-			this.electrons[i].spherical_position = [this.nucleon_radius + 80,360*Math.random(),180*Math.random()];
-		}
-		else if(this.electrons[i].type == "8s"){
-			this.electrons[i].spherical_position = [this.nucleon_radius + 100,360*Math.random(),180*Math.random()];
-		}
-		this.electrons[i].draw();
-	}
+		electron.draw();
+	});
 	
 	mvPushMatrix(mvMatrix);
 	mvRotate(360*Math.random(), [1,0,0]);	
